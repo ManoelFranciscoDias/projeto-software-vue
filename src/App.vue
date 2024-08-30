@@ -1,29 +1,14 @@
 <script setup>
-import { ref, onMounted, onUnmounted, reactive } from 'vue';
+import { ref } from 'vue';
 
 
 const isMenuActive = ref(false);
-const currentSlide = ref(1);
 
 function toggleMenu() {
   isMenuActive.value = !isMenuActive.value;
 }
 
-const dados = reactive({
-  nome: '',
-  email: '',
-  cpf: '',
 
-})
-
-function validacaosenha() {
-  if (dados.nome == '' || dados.email == '' || dados.cpf == '') {
-
-    alert("Existem campos vazios")
-
-  }
-
-}
 
 
 
@@ -37,18 +22,12 @@ function validacaosenha() {
         <h1 class="logo">LOGO.</h1>
       </router-link>
 
-      <ul :class="['nav-menu', { active: isMenuActive }]">
+      <ul :class="['nav-menu', { active: !isMenuActive }]">
         <li class="nav-item">
-          <router-link to="/categorias" class="nav-link">PEÇAS</router-link>
+          <router-link to="/clientes" class="nav-link">CLIENTES</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/eventos" class="nav-link">CLIENTES</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/sobre" class="nav-link">SOBRE</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/contato" class="nav-link">CONTATO</router-link>
+          <router-link to="/peças" class="nav-link">PEÇAS</router-link>
         </li>
       </ul>
 
@@ -63,25 +42,7 @@ function validacaosenha() {
   </header>
 
 
-  <div class="container">
-    <div style="color: white;" class="formulario">
-      <h1>CLIENTES</h1>
-      <div class="column">
-        <label for="">Nome:</label>
-        <input type="text" v-model="dados.nome">
-      </div>
-      <div class="column">
-        <label for="">Email:</label>
-        <input type="email" v-model="dados.email">
-      </div>
-      <div class="column">
-        <label for="">CPF:</label>
-        <input type="text" v-model="dados.cpf">
-      </div>
 
-      <button @click="validacaosenha" class="btn">CADASTRAR</button>
-    </div>
-  </div>
 
 
 </template>
@@ -95,8 +56,12 @@ header {
 }
 
 .nav-item {
-  list-style: none;
-}
+    margin: 16px 0;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
 
 .navbar {
   background-color: #0D0D0D;
@@ -124,18 +89,27 @@ header {
 }
 
 .nav-link:hover {
-  color: rgb(197, 169, 135);
+  background-color: aqua;
+  width: 300px;
 }
 
 .nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 30px;
+  position: fixed;
+    left: -100%;
+    top: 70px;
+    gap: 0;
+    background-color: #262626;
+
+    text-align: center;
+    flex-direction: column;
+    width: 20%;
+    height: 100%;
+    transition: 0.3s;
 }
 
 .hamburguer {
-  cursor: pointer;
-  display: none;
+  display: block;
+  
 }
 
 .bar {
@@ -148,33 +122,6 @@ header {
   transition: all 0.3s ease-in-out;
 }
 
-@media (max-width: 768px) {
-  .hamburguer {
-    display: block;
-  }
-
-  .nav-menu {
-    position: fixed;
-    left: -100%;
-    top: 60px;
-    gap: 0;
-    background-color: rgb(0, 0, 0);
-    text-align: center;
-    flex-direction: column;
-    width: 100%;
-    transition: 0.3s;
-
-  }
-
-  .nav-item {
-    margin: 16px 0;
-  }
-
-  .nav-menu.active {
-    left: 0;
-  }
-
-}
 
 .formulario {
   background-color: #111111;
