@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 
 
+
 const isMenuActive = ref(false);
 
 function toggleMenu() {
@@ -19,15 +20,32 @@ function toggleMenu() {
   <header>
     <nav class="navbar">
       <router-link class="nav-link" to="/">
-        <h1 class="logo">LOGO.</h1>
+        <img src="./assets/img/457569511_519245327358183_5621102455325433523_n.jpg" alt="" class="logo">
       </router-link>
 
-      <ul :class="['nav-menu', { active: !isMenuActive }]">
+      <ul :class="['nav-menu', { active: isMenuActive }]">
+        
+        
         <li class="nav-item">
           <router-link to="/clientes" class="nav-link">CLIENTES</router-link>
         </li>
         <li class="nav-item">
           <router-link to="/peças" class="nav-link">PEÇAS</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/orçamentos" class="nav-link">ORÇAMENTOS</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/serviços" class="nav-link">SERVIÇOS</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/peças-usadas" class="nav-link">PEÇAS USADAS</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/relatorios" class="nav-link">RELATORIOS</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/principais-clientes" class="nav-link">PRINCIPAIS CLIENTES</router-link>
         </li>
       </ul>
 
@@ -39,7 +57,13 @@ function toggleMenu() {
 
 
     </nav>
+  
+    <main>
+      <RouterView />
+    </main>
   </header>
+
+  
 
 
 
@@ -51,7 +75,7 @@ function toggleMenu() {
 header {
   display: flex;
   flex-direction: column;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
 
 }
 
@@ -64,7 +88,7 @@ header {
   }
 
 .navbar {
-  background-color: #0D0D0D;
+  background-color: #000000;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -74,10 +98,9 @@ header {
 }
 
 .logo {
-  color: #fff;
-  font-size: 1.8rem;
-  font-weight: bold;
-  text-decoration: none;
+
+  width: 120px;
+  height: 30px
 
 }
 
@@ -89,7 +112,7 @@ header {
 }
 
 .nav-link:hover {
-  background-color: aqua;
+  color: #5e5d5d;
   width: 300px;
 }
 
@@ -104,7 +127,7 @@ header {
     flex-direction: column;
     width: 20%;
     height: 100%;
-    transition: 0.3s;
+    transition: 0.5s
 }
 
 .hamburguer {
