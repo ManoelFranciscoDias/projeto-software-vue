@@ -19,10 +19,7 @@ function toggleMenu() {
 
   <header>
     <nav class="navbar">
-      <router-link class="nav-link" to="/">
-        <img src="./assets/img/457569511_519245327358183_5621102455325433523_n.jpg" alt="" class="logo">
-      </router-link>
-
+      
       <ul :class="['nav-menu', { active: isMenuActive }]">
         
         
@@ -54,6 +51,9 @@ function toggleMenu() {
         <span class="bar"></span>
         <span class="bar"></span>
       </div>
+      <router-link class="nav-link" to="/">
+        <img src="./assets/img/457569511_519245327358183_5621102455325433523_n.jpg" alt="" class="logo">
+      </router-link>
 
 
     </nav>
@@ -111,9 +111,9 @@ header {
 
 }
 
+
 .nav-link:hover {
   color: #5e5d5d;
-  width: 300px;
 }
 
 .nav-menu {
